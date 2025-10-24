@@ -6,7 +6,7 @@ services:
       MYSQL_ROOT_PASSWORD: docker
       MYSQL_DATABASE: klustudentdb
     ports:
-      - "3307:3306"
+      - "3309:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
@@ -14,9 +14,9 @@ services:
 
   backend:
     image: ruchithavemula11/docker-backend:latest
-    container_name: springboot
+    container_name: studentback
     ports:
-      - "2000:2000"
+      - "2009:2009"
     depends_on:
       - mysqldb
     restart: on-failure
@@ -25,9 +25,9 @@ services:
 
   frontend:
     image: ruchithavemula11/docker-frontend:latest
-    container_name: react
+    container_name: studentfront
     ports:
-      - "3002:80"
+      - "3009:80"
     depends_on:
       - backend
     restart: on-failure
